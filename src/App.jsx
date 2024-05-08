@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import componentsImg from './assets/components.png';
 import { CORE_CONCEPTS } from './data.js';
 import Header from './components/Header/Header.jsx';
@@ -5,10 +7,17 @@ import CoreConcept from './components/CoreConcept.jsx';
 import TabButton from './components/TabButton.jsx';
 
 function App() {
+  let tabContent = "Please click a button"; 
+  const [ selectedTopic, setSelectedTopic ] = useState('please click a button');
+
 function handleSelect(selectedButton) {
   //selectedButton => 'components','jsx','props','state'
-  console.log('Hello World - selected!' + selectedButton);
+  // console.log('Hello World - selected!' + selectedButton);
+  setSelectedTopic(selectedButton);
+  console.log(selectedTopic);
 }
+
+console.log("APP COMPONENT EXECUTING");
 
   return (
     <div>
@@ -35,7 +44,7 @@ function handleSelect(selectedButton) {
             <TabButton onSelect={() => handleSelect('props')}>Props</TabButton>
             <TabButton onSelect={() => handleSelect('state')}>State</TabButton>
           </menu>
-          Dynamic Content
+          {selectedTopic}
         </section>
       </main>
     </div>
